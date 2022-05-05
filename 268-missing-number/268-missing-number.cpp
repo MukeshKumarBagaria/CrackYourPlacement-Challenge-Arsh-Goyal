@@ -10,7 +10,7 @@ public:
         for(int i=0;i<n;i++){
             arraySum+=nums[i];
         }
-        if(arraySum==expectedSum) return 0;
+       
         return expectedSum-arraySum;
     }
 };
