@@ -1,0 +1,43 @@
+QUESTION-   Given an array nums with n objects colored red, white, or blue, sort them in-place so that objects of the same color are adjacent, with the colors in the order red, white, and blue.
+
+We will use the integers 0, 1, and 2 to represent the color red, white, and blue, respectively.
+
+You must solve this problem without using the library's sort function.
+
+EX-1
+Input: nums = [2,0,2,1,1,0]
+Output: [0,0,1,1,2,2]
+
+
+SOLUTION-
+
+class Solution {
+public:
+    void sortColors(vector<int>& nums) {
+      
+        //S-1  can be done using sort function of stl but restricted in question
+        
+        //S-2 o(n) time complexity and o(1) space complexity
+        int n=nums.size();
+        int countZero=0;
+        int countOnes=0;
+        int countTwos=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]==0){
+                countZero++;
+            }else if(nums[i]==1){
+                countOnes++;
+            }else countTwos++;
+        }
+        
+        for(int i=0;i<n;i++){
+            if(countZero>0){
+                nums[i]=0;
+                countZero--;
+            }else if(countOnes>0){
+                nums[i]=1;
+                countOnes--;
+            }else nums[i]=2;
+        }
+    }
+};
