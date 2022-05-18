@@ -1,0 +1,34 @@
+QUESTION-Given an integer array nums, move all 0's to the end of it while maintaining the relative order of the non-zero elements.
+
+Note that you must do this in-place without making a copy of the array.
+
+EX-Input: nums = [0,1,0,3,12]
+Output: [1,3,12,0,0]
+
+
+SOLUTION--
+
+S-1. CAN BE DONE easiyly by taking extra space we can create in o(n) time 
+approach-- we can make an another array and then by iterating through given array we can check if element is non zero than push into the newly created
+array and if it is zero than we can count it by making an counter and then after copleation of iteration we can push no of zero which our counter counted 
+in the newly created array
+but this approach is taking an o(n) extra space 
+
+S-2
+
+O(N) TIME COMPLEXITY AND O(1) S.C BUT IT'S A TRICKY ANSWER.  [TODO- I HAVE TO REVISE IT TIME TO TIME SO THAT CAN HANDLE THIS KIND OF Q. IN FUTURE]
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        int n=nums.size();
+        int count=0;
+        for(int i=0;i<n;i++){
+        if(nums[i]!=0){
+            swap(nums[count],nums[i]);
+            count++;
+        }
+            
+        
+        }
+    }
+};
