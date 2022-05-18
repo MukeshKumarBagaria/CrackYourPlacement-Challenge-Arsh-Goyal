@@ -1,0 +1,39 @@
+QUESTION- Set Matrix Zeroes
+Given an m x n integer matrix matrix, if an element is 0, set its entire row and column to 0's.
+
+You must do it in place.
+EX-
+Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
+Output: [[1,0,1],[0,0,0],[1,0,1]]
+
+SOLUTON--
+class Solution {
+public:
+    void setZeroes(vector<vector<int>>& matrix) {
+        int row=matrix.size();
+        int col=matrix[0].size();
+        //making two set and then inserting them all the rows and col which is having zero
+        unordered_set<int>zeroRows;
+        unordered_set<int>zeroCols;
+        
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(matrix[i][j]==0){
+                    zeroRows.insert(i);
+                    zeroCols.insert(j);
+                }
+            }
+        }
+        
+           for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+               
+                //checking that i or j in the set or not if in the set //that means ith row or jth col is having zero and then we have to make //it sero
+                if(zeroRows.find(i)!=zeroRows.end()||zeroCols.find(j)!=zeroCols.end()) {
+                   matrix[i][j]=0;
+               }
+                
+            }
+        }
+    }
+};
