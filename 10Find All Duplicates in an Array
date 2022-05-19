@@ -6,7 +6,6 @@ EX-Input: nums = [4,3,2,7,8,2,3,1]
 Output: [2,3]
 
 
-
 SOLUTION-
 
 //time complexity of solution is= o(n)  s.c=NOT ABLE TO DECIDE(???????) [my guess- o(n) for set and o(n) for ans vector]
