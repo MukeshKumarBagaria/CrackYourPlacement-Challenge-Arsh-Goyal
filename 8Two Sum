@@ -1,0 +1,65 @@
+QUESTION-
+Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+You can return the answer in any order
+EX-Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
+Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+
+SOLUTION-
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+    
+    SOLUTION-1
+       // using two loop in o(n^2) time complexity 
+        // int n=nums.size();
+        // for(int i=0;i<n;i++){
+        // for(int j=i+1;j<n;j++){
+        //     if(nums[i]+nums[j]==target){
+        //         return {i,j};
+        //     }
+        //   }
+        // }
+        // return {-1,-1};
+        
+        
+        //SOLUTION-2
+        
+        //using two pointer  (but this way order of elements are changing and we will not be able to reuturn exxpected index so answer will be wrong)
+        // int n=nums.size();
+        //  sort(nums.begin(),nums.end());
+        // int j=n-1;
+        // int i=0;
+        // while(i<=j){
+        //     if(nums[i]+nums[j]==target){
+        //       return {i,j};
+        //     }else if(nums[i]+nums[j]>target){
+        //         j--;
+        //     }else i++;
+        // }
+        // return {-1,-1};
+        
+        
+        
+       SOLUTION-3
+       //using  hashtable
+    
+        int n=nums.size();
+        unordered_map<int,int>s;
+        vector<int>res;
+        for(int i=0;i<n;i++){
+            int complement=target-nums[i];
+            //s.count() function give us 0 or 1 if complement is present in the our hashmap s then it will give us 1 otherwise 0
+            if(s.count(complement)){
+                res.push_back(s[complement]);
+                res.push_back(i);
+            }else s[nums[i]]=i;
+        }
+        return res;
+    }
+};
