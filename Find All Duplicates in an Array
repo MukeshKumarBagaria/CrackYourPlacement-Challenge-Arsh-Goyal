@@ -1,0 +1,29 @@
+QUESTION-
+Given an integer array nums of length n where all the integers of nums are in the range [1, n] and each integer appears once or twice, return an array of all the integers that appears twice.
+
+You must write an algorithm that runs in O(n) time and uses only constant extra space.
+EX-Input: nums = [4,3,2,7,8,2,3,1]
+Output: [2,3]
+
+
+
+SOLUTION-
+
+//time complexity of solution is= o(n)  s.c=NOT ABLE TO DECIDE(???????) [my guess- o(n) for set and o(n) for ans vector]
+
+
+class Solution {
+public:
+    vector<int> findDuplicates(vector<int>& nums) {
+        
+        int n=nums.size();
+       unordered_set<int>unique;
+        vector<int>ans;
+        for(int i=0;i<n;i++){
+            if(unique.find(nums[i])==unique.end()){
+               unique.insert(nums[i]);
+            }else ans.push_back(nums[i]);
+        }
+        return ans;
+    }
+};
