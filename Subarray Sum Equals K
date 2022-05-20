@@ -1,0 +1,54 @@
+QUESTION-560. Subarray Sum Equals K
+
+Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
+
+A subarray is a contiguous non-empty sequence of elements within an array.
+
+ 
+
+Example 1:
+
+Input: nums = [1,1,1], k = 2
+Output: 2
+
+
+SOLUTION -
+
+
+
+
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        //o(n^2)time complexity  solution [84 / 92 test cases passed.]
+
+//         int n=nums.size();
+//         int ans=0;
+//         for(int i=0;i<n;i++){
+//             int sum=0;
+//             for(int j=i;j<n;j++){
+//                 sum+=nums[j];
+//                 if(sum==k) ans++;
+//             }
+//           sum=0;  
+//         }
+//         return ans;
+        
+        //o(n)t.c solution
+        int n=nums.size();
+        unordered_map<int,int>complementMap;
+        complementMap.insert(pair<int,int>(0,1));
+        int ans=0;
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            int complementSum=sum-k;
+          if(complementMap.count(complementSum)){
+              ans+=complementMap[complementSum];
+          }  
+            complementMap[sum]++;
+        }
+        return ans;
+        
+    }
+};
