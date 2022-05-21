@@ -1,0 +1,40 @@
+QUESTION-
+Given an array nums of size n, return the majority element.
+
+The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
+
+ 
+
+Example 1:
+
+Input: nums = [3,2,3]
+Output: 3
+
+
+SOLUTION-
+class Solution {
+public:
+    int majorityElement(vector<int>& nums) {
+        //SOLUTION-1   o(n*n)solution using two loops
+        
+        //SOLUTION-2:-
+        //using fre.map we can store freq.of each ele o(n)tc o(n)sc
+        //intution is so simple jus storing freq. of each ele. and checking at the same time that if freq. of that ele. is more than n/2
+        int n=nums.size();
+        unordered_map<int,int>freqMap;
+        if(n==1)return nums[0];
+        for(int i=0;i<n;i++){
+            if(freqMap.count(nums[i])){
+                 freqMap[nums[i]]++;
+                if(freqMap[nums[i]]>(n/2)){
+                    return nums[i];
+                }
+        
+            }else freqMap.insert(pair<int,int>(nums[i],1));
+        }
+        return -1;
+        
+        
+        
+    }
+};
