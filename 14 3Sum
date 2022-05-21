@@ -1,0 +1,49 @@
+QUESTION-
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+Notice that the solution set must not contain duplicate triplets.
+
+ 
+
+Example 1:
+
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+
+
+SOLUTION-
+
+class Solution {
+public:
+    vector<vector<int>> threeSum(vector<int>& nums) {
+        
+        //t.c=o(nlogn) sc o(N)
+        sort(nums.begin() , nums.end());   
+        //these are the base cases if the first ele will be +ve no point to go ahead + if size<3 no triplet can be make
+        if(nums.size() < 3){               
+            return {};
+        }
+        if(nums[0] > 0){                    
+            return {};
+        }
+        unordered_map<int , int> hashMap;
+        for(int i = 0 ; i < nums.size() ; ++i){     
+            hashMap[nums[i]] = i;
+        }
+        vector<vector<int>> answer;    //create vector of vector
+        for(int i = 0 ; i < nums.size() - 2 ; ++i){     
+            if(nums[i] > 0){     
+                break;
+            }
+            for(int j = i + 1 ; j < nums.size() - 1 ; ++j){    
+                int restTwo = -1*(nums[i] + nums[j]);    
+                if(hashMap.count(restTwo) && hashMap[restTwo] > j){ 
+                    answer.push_back({nums[i] , nums[j] , restTwo});
+                }
+                j = hashMap[nums[j]]; 
+            }
+            i = hashMap[nums[i]];     
+        }
+        return answer; 
+    }
+};
