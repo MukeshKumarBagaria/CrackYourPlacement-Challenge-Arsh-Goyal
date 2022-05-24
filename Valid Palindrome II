@@ -1,0 +1,62 @@
+question-
+Given a string s, return true if the s can be palindrome after deleting at most one character from it.
+
+ 
+
+Example 1:
+
+Input: s = "aba"
+Output: true
+
+
+
+solution
+class Solution {
+     bool valid(string s, int i, int j)
+    {
+        while(i<j)
+        {
+            if(s[i]!=s[j])
+            {
+                return false;
+            }
+            i++;
+            j--;
+        }
+        return true;
+    }
+public:
+    bool validPalindrome(string s) {
+        //method if we just have to replace one ele instead of deleting
+        // int n=s.size();
+        // int i=0;
+        // int j=n-1;
+        // int count=0;
+        // while(i<j){
+        //     if(s[i]!=s[j]){
+        //         count++;
+        //     }
+        //     i++;
+        //     j--;
+        // }
+        // if(count>1){
+        //     return false;
+        // }else return true;
+        
+        
+         int i=0;
+        int j=s.size()-1;
+        
+        while(i<j)
+        {
+            if(s[i]!=s[j])
+            {
+                return valid(s, i, j-1) || valid(s, i+1, j);
+            }
+            i++;
+            j--;
+        }
+        
+        return true;
+    }
+};
