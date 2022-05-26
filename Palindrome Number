@@ -1,0 +1,51 @@
+QUESTION-
+Given an integer x, return true if x is palindrome integer.
+
+An integer is a palindrome when it reads the same backward as forward.
+
+For example, 121 is a palindrome while 123 is not.
+ 
+
+Example 1:
+
+Input: x = 121
+Output: true
+Explanation: 121 reads as 121 from left to right and from right to left.
+
+Solution-
+
+class Solution {
+public:
+    bool isPalindrome(int x) {
+        //method -1
+        
+//     string s1=to_string(x);
+//         string s2;
+//         //if no is -ve than it's than it will not palindrome
+//         if(x<0) return false;
+//         //case for no is equlas to zero
+//         if(x==0) return true;
+//         //reversing a number and storing that into n
+//         while(x!=0){
+//             s2+=to_string(x%10);
+//             x/=10;
+//         }
+//         return s1==s2;
+        
+        
+        //method-2
+        
+    long int res=x;
+        long int rem,val=0;
+        while(res>0){
+            rem = res%10;
+            val = val*10 + rem;
+            res = res/10;
+        }
+        if(x==val)
+            return true;
+        else
+            return false; 
+    }
+};
+
