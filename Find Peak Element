@@ -44,7 +44,8 @@ public:
         //  return n-1;  //cover case 2 if array is asscending last ele will be peak element
         
         
-     
+
+
         
     }
 };
